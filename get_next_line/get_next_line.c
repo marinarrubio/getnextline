@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:20 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:52:47 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:49:04 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,22 @@ char	*get_next_line(int fd)
 	int i;
 
 	i = 1;
-	printf("%i\n", 1);	
-	while(!ft_strchr(rest, '\n') && (i = read(fd, buffer, BUFFER_SIZE) > 0))
+	if (rest)
+		// printf("- %s - ", rest);
+	rest = NULL;
+	// printf("%i\n", 1);
+	// 	printf("%i\n", 2);
+	while(!ft_strchr(rest, '\n') && i > 0)
 	{
+		i = read(fd, buffer, BUFFER_SIZE);	
+		// printf("%i\n", i);	
 		buffer[i] = '\0';
 		tmp = ft_strjoin(rest, buffer);
+		
 		free(rest);
 		rest = tmp;
-		printf("%i\n", 1);	
 	}
+	// printf("%i\n", 4);
 	if(fd == -1)
 		return(NULL);
 	line = ft_strdup_limit(rest, '\n');
@@ -41,11 +48,31 @@ char	*get_next_line(int fd)
 	return(line);
 		
 }
+void f()
+{
+	system("leaks -q a.out");
+}
 int main ()
 {
-	// atexit(get_next_line);
+	atexit(f);
 	int fd;
-
 	fd = open("lines.txt", O_RDWR);
-	printf("%s", get_next_line(fd));
+	char *c = get_next_line(fd);
+
+	printf("%s", c);
+
+	free(c);
+	c = get_next_line(fd);
+	printf("%s", c);
+
+	free(c);
+	c = get_next_line(fd);
+	printf("%s", c);
+
+	free(c);
+	c = get_next_line(fd);
+	printf("%s", c);
+
+	free(c);
+
 }

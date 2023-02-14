@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:31 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:17:42 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:14:48 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	newstr = malloc(lens1 + lens2 + 1);
 	if (!newstr)
 		return (NULL);
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		newstr[k++] = s1[i++];
 	}
 	i = 0;
-	while (s2[i])
+	while (s2 && s2[i])
 	{
 		newstr[k++] = s2[i++];
 	}
@@ -42,7 +42,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	while (s && *s)
 	{
 		if (*s == (unsigned char)c)
 			return ((char *)s);
@@ -97,7 +97,7 @@ char	*ft_strdup(const char *s1)
 	return (dst);
 }
 
-char	*ft_strdup_limit(const char *str, char limit)
+char	*ft_strdup_limit(const char *str, char limit) //pochaporeelsaltodelinea
 {
 	char *dst;
 	int len;
@@ -107,7 +107,7 @@ char	*ft_strdup_limit(const char *str, char limit)
 	len = 0;
 	while(str[len] && str[len] != limit)
 		len++;
-	dst =(char*)malloc(sizeof(*dst) * (len + 1));
+	dst =(char*)malloc(sizeof(*dst) * (len + 2));
 	if(!dst)
 		return(NULL);
 	while(i < len)
@@ -115,6 +115,7 @@ char	*ft_strdup_limit(const char *str, char limit)
 		dst[i] = str[i];
 		i++;
 	}
+	dst[i++] = '\n';
 	dst[i] = '\0';
 	return(dst);
 }
@@ -124,7 +125,7 @@ size_t	ft_strlen(const char *str)
 	size_t	n;
 
 	n = 0;
-	while (str[n])
+	while (str && str[n])
 		n++;
 	return (n);
 }

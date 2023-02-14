@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:42 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:35:23 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:14:18 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 24
 # endif
 
 # ifndef BUFFER_SIZE
