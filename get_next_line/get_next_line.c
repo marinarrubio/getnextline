@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:20 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/14 14:49:04 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:58:38 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@ char	*get_next_line(int fd)
 		// printf("%i\n", i);	
 		buffer[i] = '\0';
 		tmp = ft_strjoin(rest, buffer);
-		
+		printf("TMP:__%s__\n", tmp);
 		free(rest);
 		rest = tmp;
+		printf("REST:__%s__\n", rest);
 	}
 	// printf("%i\n", 4);
 	if(fd == -1)
 		return(NULL);
 	line = ft_strdup_limit(rest, '\n');
+	printf("LINE:--%s--\n", line);
 	tmp = ft_strdup(rest + ft_strlen(line) + 1);
 	free(rest);
 	rest = tmp;
