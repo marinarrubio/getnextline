@@ -1,0 +1,5 @@
+line to read number 1
+line to read number 2
+another line to read, this is number 3
+number 4, can you read me?
+cool, now you've got the get_next_line.
