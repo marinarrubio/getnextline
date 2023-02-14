@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:31 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/14 11:50:17 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:17:42 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,28 @@ char	*ft_strdup(const char *s1)
 	}
 	dst[i] = '\0';
 	return (dst);
+}
+
+char	*ft_strdup_limit(const char *str, char limit)
+{
+	char *dst;
+	int len;
+	int i;
+
+	i = 0;
+	len = 0;
+	while(str[len] && str[len] != limit)
+		len++;
+	dst =(char*)malloc(sizeof(*dst) * (len + 1));
+	if(!dst)
+		return(NULL);
+	while(i < len)
+	{
+		dst[i] = str[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return(dst);
 }
 
 size_t	ft_strlen(const char *str)
