@@ -6,9 +6,11 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:31 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/14 13:14:48 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:27:22 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 #include "get_next_line.h"
 
@@ -53,51 +55,31 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*sub;
-	unsigned int	i;
-
-	i = 0;
-	if (len > ft_strlen(s) || (len + start) > ft_strlen(s))
-		len = (ft_strlen(s) - start);
-	if (start >= ft_strlen(s))
-		len = 0;
-	sub = malloc(len + 1);
-	if (!sub)
-		return (NULL);
-	while (s[i] && len)
-	{
-			sub[i] = s[start];
-			start++;
-			i++;
-			len--;
-	}
-	sub[i] = '\0';
-	return (sub);
-}
 char	*ft_strdup(const char *s1)
 {
 	int		i;
 	char	*dst;
 
 	i = 0;
+	if(s1 == NULL)
+		return(NULL);
 	while (s1[i])
 		i++;
-	dst = malloc(sizeof(char) * i + 1);
+	dst = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	if (dst == '\0')
+	if (dst == NULL)
 		return (NULL);
 	while (s1[i])
 	{
 		dst[i] = s1[i];
 		i++;
 	}
+
 	dst[i] = '\0';
 	return (dst);
 }
 
-char	*ft_strdup_limit(const char *str, char limit) //pochaporeelsaltodelinea
+char	*ft_strdup_limit(const char *str, char limit) 
 {
 	char *dst;
 	int len;
@@ -105,17 +87,19 @@ char	*ft_strdup_limit(const char *str, char limit) //pochaporeelsaltodelinea
 
 	i = 0;
 	len = 0;
+	if(str == NULL)
+		return(NULL);
 	while(str[len] && str[len] != limit)
 		len++;
-	dst =(char*)malloc(sizeof(*dst) * (len + 2));
+	dst =(char*)malloc(sizeof(*dst) * (len + 1));
 	if(!dst)
 		return(NULL);
+
 	while(i < len)
 	{
 		dst[i] = str[i];
 		i++;
 	}
-	dst[i++] = '\n';
 	dst[i] = '\0';
 	return(dst);
 }

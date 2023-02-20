@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:42 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/14 14:14:18 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:23:08 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 24
+#  define BUFFER_SIZE 42
 # endif
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE BUFSIZ
 # endif
 
-# if BUFFER_SIZE > 9223372036854775806L /*Double long*/
+# if BUFFER_SIZE > 9223372036854775806 /*Double long*/
 #  undef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
@@ -34,7 +34,6 @@
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_strdup_limit(const char *str, char limit);
 size_t	ft_strlen(const char *str);
