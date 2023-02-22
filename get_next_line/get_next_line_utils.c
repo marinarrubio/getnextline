@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:31 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/20 12:27:22 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:08:28 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ char	*ft_strdup(const char *s1)
 	char	*dst;
 
 	i = 0;
-	if(s1 == NULL)
-		return(NULL);
+	if (s1 == NULL)
+		return (NULL);
 	while (s1[i])
 		i++;
 	dst = malloc(sizeof(char) * (i + 1));
@@ -74,34 +74,32 @@ char	*ft_strdup(const char *s1)
 		dst[i] = s1[i];
 		i++;
 	}
-
 	dst[i] = '\0';
 	return (dst);
 }
 
-char	*ft_strdup_limit(const char *str, char limit) 
+char	*ft_strdup_limit(const char *str, char limit)
 {
-	char *dst;
-	int len;
-	int i;
+	char	*dst;
+	int		len;
+	int		i;
 
 	i = 0;
 	len = 0;
-	if(str == NULL)
-		return(NULL);
-	while(str[len] && str[len] != limit)
+	if (str == NULL)
+		return (NULL);
+	while (str[len] && str[len] != (limit + 1))
 		len++;
-	dst =(char*)malloc(sizeof(*dst) * (len + 1));
-	if(!dst)
-		return(NULL);
-
-	while(i < len)
+	dst = (char *)malloc(sizeof(*dst) * (len + 1));
+	if (!dst)
+		return (NULL);
+	while (i < len)
 	{
 		dst[i] = str[i];
 		i++;
 	}
 	dst[i] = '\0';
-	return(dst);
+	return (dst);
 }
 
 size_t	ft_strlen(const char *str)

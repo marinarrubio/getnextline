@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:42 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/20 14:23:08 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:23:11 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 3
 # endif
 
 # ifndef BUFFER_SIZE
@@ -37,7 +37,5 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strdup_limit(const char *str, char limit);
 size_t	ft_strlen(const char *str);
-
-
 
 #endif
