@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 11:42:20 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/27 19:35:03 by marubio-         ###   ########.fr       */
+/*   Created: 2023/02/27 19:53:33 by marubio-          #+#    #+#             */
+/*   Updated: 2023/02/27 20:39:12 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 #include <fcntl.h>
 
@@ -42,7 +42,7 @@ char	*read_and_rest(int fd, char *rest)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*rest = NULL;
+	static char	*rest[OPEN_MAX];
 	char		*tmp;
 	int			i;
 
@@ -50,20 +50,20 @@ char	*get_next_line(int fd)
 	tmp = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	rest = read_and_rest(fd, rest);
+	rest[fd] = read_and_rest(fd, rest[fd]);
 	line = ft_strdup_limit(rest, '\n');
-	if (rest && rest[ft_strlen(line) - 1] == '\n')
+	if (rest[fd] && rest[ft_strlen(line) - 1] == '\n')
 	{
-		tmp = ft_strdup(rest + ft_strlen(line));
+		tmp = ft_strdup(rest[fd] + ft_strlen(line));
 		free(rest);
-		rest = NULL;
-		rest = tmp;
+		rest[fd] = NULL;
+		rest[fd] = tmp;
 		tmp = NULL;
 	}
 	else
 	{
 		free(rest);
-		rest = NULL;
+		rest[fd] = NULL;
 	}
 	return (line);
 }
