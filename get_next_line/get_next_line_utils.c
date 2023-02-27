@@ -6,13 +6,14 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:31 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/22 14:08:28 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:46:48 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
 #include "get_next_line.h"
+
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -55,6 +56,24 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	while (i >= 0 && *s && (unsigned char)c >= 0)
+	{
+		if (s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
+		i--;
+	}
+	if ((unsigned char)c == '\0')
+		return ((char *)&s[i]);
+	return (0);
+}
+
 char	*ft_strdup(const char *s1)
 {
 	int		i;
@@ -67,7 +86,7 @@ char	*ft_strdup(const char *s1)
 		i++;
 	dst = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	if (dst == NULL)
+	if (!dst)
 		return (NULL);
 	while (s1[i])
 	{
@@ -78,6 +97,15 @@ char	*ft_strdup(const char *s1)
 	return (dst);
 }
 
+/**
+ * It takes a string and a character, and returns a copy of the string
+ * up to the character
+ * 
+ * @param str The string to be copied.
+ * @param limit the character that will be used to limit the string.
+ * 
+ * @return A pointer to a new string.
+ */
 char	*ft_strdup_limit(const char *str, char limit)
 {
 	char	*dst;
@@ -88,7 +116,9 @@ char	*ft_strdup_limit(const char *str, char limit)
 	len = 0;
 	if (str == NULL)
 		return (NULL);
-	while (str[len] && str[len] != (limit + 1))
+	while (str[len] && str[len] != (limit))
+		len++;
+	if(str[len] == (limit))
 		len++;
 	dst = (char *)malloc(sizeof(*dst) * (len + 1));
 	if (!dst)
