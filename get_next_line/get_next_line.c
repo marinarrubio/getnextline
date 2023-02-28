@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:42:20 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/27 19:35:03 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/28 09:52:56 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+/**
+ * It reads from the file descriptor until it finds a newline character
+ * or until it reaches the end of
+ * the file
+ * 
+ * @param fd file descriptor
+ * @param rest the string that contains the rest of the line from
+ * the previous read
+ * 
+ * @return A pointer to a string.
+ */
 char	*read_and_rest(int fd, char *rest)
 {
 	char		buffer[BUFFER_SIZE + 1];
@@ -39,6 +50,14 @@ char	*read_and_rest(int fd, char *rest)
 	return (rest);
 }
 
+/**
+ * It reads from the file descriptor fd until it finds a newline character,
+ * and returns the line read
+ * 
+ * @param fd file descriptor
+ * 
+ * @return A line of text from a file.
+ */
 char	*get_next_line(int fd)
 {
 	char		*line;

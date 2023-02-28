@@ -6,14 +6,21 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 19:54:05 by marubio-          #+#    #+#             */
-/*   Updated: 2023/02/27 20:13:28 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:07:08 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 #include "get_next_line_bonus.h"
 
+/**
+ * It takes two strings and joins them together.
+ * 
+ * @param s1 The first string to be joined.
+ * @param s2 The string to be appended to the end of s1.
+ * 
+ * @return A pointer to a new string that is the result of the
+ * concatenation of s1 and s2.
+ */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*newstr;
@@ -42,6 +49,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (newstr);
 }
 
+/**
+ * The function ft_strchr() locates the first occurrence of
+ * c (converted to a char) in the string
+ * pointed to by s
+ * 
+ * @param s The string to search.
+ * @param c The character to search for.
+ * 
+ * @return A pointer to the first occurrence of the
+ * character c in the string s.
+ */
 char	*ft_strchr(const char *s, int c)
 {
 	while (s && *s)
@@ -55,6 +73,15 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
+/**
+ * It copies the string s1 into a newly allocated string, and
+ * returns a pointer to it
+ * 
+ * @param s1 The string to be copied.
+ * 
+ * @return A pointer to a new string which is a duplicate of
+ * the string s1.
+ */
 char	*ft_strdup(const char *s1)
 {
 	int		i;
@@ -113,6 +140,13 @@ char	*ft_strdup_limit(const char *str, char limit)
 	return (dst);
 }
 
+/**
+ * It returns the length of a string.
+ * 
+ * @param str The string to be measured.
+ * 
+ * @return The length of the string.
+ */
 size_t	ft_strlen(const char *str)
 {
 	size_t	n;
